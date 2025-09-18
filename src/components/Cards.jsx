@@ -1,31 +1,26 @@
 export default function Cards() {
-  const jobs = [
+  const anunciosData = [
     {
-      title: "UI – Front End Dev",
-      desc: "Currently, ManTech is seeking a motivated, career and customer-oriented Software Developer to join our team in Fort Meade, MD.",
-      date: "May 17, 2022",
-      salary: "98,000 USD",
-      type: "Full-time",
-      location: "Columbia, MD",
-      href: "javascript:void(0)",
+      titulo: "Bicicleta Aro 29",
+      descricaoCurta:
+        "Bicicleta em ótimo estado, usada apenas em trilhas leves.",
+      created_at: "01/10/2025",
+      preco: "R$ 1.200,00",
+      usuario: {
+        cidade: "São Paulo",
+        estado: "SP",
+      },
     },
     {
-      title: "Back End Developer",
-      desc: " Help us solve problems and develop great user interface tools for our developers.",
-      date: "Nov 11, 2022",
-      salary: "$105,000 USD",
-      type: "Part-time",
-      location: "Remote",
-      href: "javascript:void(0)",
-    },
-    {
-      title: "Full-Stack Developer",
-      desc: "This position is 100% remote, working as part of a small, multi-functional team. You must be confident at working alone.",
-      date: "Jan 2, 2022",
-      salary: "163,273 USD",
-      type: "Full-time",
-      location: "Remote",
-      href: "javascript:void(0)",
+      titulo: "Smartphone Galaxy S21",
+      descricaoCurta:
+        "Smartphone usado, com tela de 6.2 polegadas e câmera de 64MP.",
+      created_at: "15/09/2025",
+      preco: "R$ 2.500,00",
+      usuario: {
+        cidade: "Rio de Janeiro",
+        estado: "RJ",
+      },
     },
   ];
 
@@ -38,16 +33,21 @@ export default function Cards() {
       </div>
 
       <ul className="mt-12 space-y-6">
-        {jobs.map((item, idx) => (
-          <li key={idx} className="p-5 bg-white rounded-md shadow-sm">
-            <a href={item.href}>
+        {anunciosData.map((item, idx) => (
+          <li
+            key={idx}
+            className="p-5 bg-white rounded-md shadow-sm flex flex-row gap-5"
+          >
+            <button className="w-full">
               <div>
                 <div className="justify-between sm:flex">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-medium text-cyan-600">
-                      {item.title}
+                  <div>
+                    <h3 className="text-start text-xl font-medium text-cyan-600">
+                      {item.titulo}
                     </h3>
-                    <p className="text-gray-500 mt-2 pr-2">{item.desc}</p>
+                    <p className="text-gray-500 mt-2 pr-2">
+                      {item.descricaoCurta}
+                    </p>
                   </div>
                   <div className="mt-5 space-y-4 text-sm sm:mt-0 sm:space-y-2">
                     <span className="flex items-center text-gray-500">
@@ -63,7 +63,7 @@ export default function Cards() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      {item.date}
+                      {item.created_at}
                     </span>
                     <span className="flex items-center text-gray-500">
                       <svg
@@ -79,7 +79,9 @@ export default function Cards() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      {item.salary}
+                      <div className="text-2xl font-bold text-blue-700">
+                        {item.preco}
+                      </div>
                     </span>
                   </div>
                 </div>
@@ -93,31 +95,15 @@ export default function Cards() {
                     >
                       <path
                         fillRule="evenodd"
-                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
-                        clipRule="evenodd"
-                      />
-                      <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-                    </svg>
-                    {item.type}
-                  </span>
-                  <span className="flex items-center text-gray-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 mr-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
                         d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
                         clipRule="evenodd"
                       />
                     </svg>
-                    {item.location}
+                    {item.usuario.cidade},{item.usuario.estado}
                   </span>
                 </div>
               </div>
-            </a>
+            </button>
           </li>
         ))}
       </ul>

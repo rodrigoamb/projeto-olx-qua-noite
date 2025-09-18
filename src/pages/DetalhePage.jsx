@@ -8,20 +8,21 @@ export default function DetalhePage() {
 
   return (
     <main className="flex overflow-hidden">
-      <div className="flex-1 hidden lg:block">
+      <div className="flex justify-center items-center">
         <img
-          src="https://images.unsplash.com/photo-1697135807547-5fa9fd22d9ec?auto=format&fit=crop&q=80&w=3387&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          className="w-full h-screen object-cover"
+          src="https://m.media-amazon.com/images/I/51VZErxKwkL._AC_SX679_.jpg"
+          className="w-[50%]"
         />
       </div>
       <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
         <div className="max-w-lg flex-1 mx-auto px-4 text-gray-600">
           <div>
             <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-              Get in touch
+              Editar anúncio
             </h3>
             <p className="mt-3">
-              We’d love to hear from you! Please fill out the form bellow.
+              Edite as informações do seu anúncio e clique em salvar quando
+              terminar.
             </p>
           </div>
           <form

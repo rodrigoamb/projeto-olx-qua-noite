@@ -10,7 +10,7 @@ import {
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 export default function Modal() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <div>

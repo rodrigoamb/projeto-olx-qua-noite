@@ -3,12 +3,9 @@ import { useEffect, useState } from "react";
 export default function Header() {
   const [state, setState] = useState(false);
 
-  // Replace javascript:void(0) paths with your paths
   const navigation = [
-    { title: "Features", path: "javascript:void(0)" },
-    { title: "Integrations", path: "javascript:void(0)" },
-    { title: "Customers", path: "javascript:void(0)" },
-    { title: "Pricing", path: "javascript:void(0)" },
+    { title: "Todos os anúncios", path: "javascript:void(0)" },
+    { title: "Meus anúncios", path: "javascript:void(0)" },
   ];
 
   useEffect(() => {
@@ -30,7 +27,7 @@ export default function Header() {
         <div className="flex items-center justify-between py-5 md:block">
           <a href="javascript:void(0)">
             <img
-              src="https://www.floatui.com/logo.svg"
+              src="https://logodownload.org/wp-content/uploads/2016/10/olx-logo-13.png"
               width={120}
               height={50}
               alt="Float UI logo"
@@ -94,13 +91,13 @@ export default function Header() {
               href="javascript:void(0)"
               className="block text-gray-700 hover:text-gray-900"
             >
-              Log in
+              Entrar
             </a>
             <a
               href="javascript:void(0)"
               className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
             >
-              Sign in
+              Cadastre-se
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
