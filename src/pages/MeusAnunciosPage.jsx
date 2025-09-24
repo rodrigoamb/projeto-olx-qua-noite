@@ -8,16 +8,17 @@ import { useState } from "react";
 
 export default function MeusAnunciosPage() {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [openModalDelete, setOpenModalDelete] = useState(false);
 
   return (
     <div>
       <HeaderLogado />
-      <SectionAddAnuncio />
-      <CardsLogado />
+      <SectionAddAnuncio setOpenDrawer={setOpenDrawer} />
+      <CardsLogado setOpenModalDelete={setOpenModalDelete} />
       <Footer />
 
-      <Drawer />
-      <Modal />
+      <Drawer open={openDrawer} setOpen={setOpenDrawer} />
+      <Modal open={openModalDelete} setOpen={setOpenModalDelete} />
     </div>
   );
 }

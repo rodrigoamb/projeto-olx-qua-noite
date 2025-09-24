@@ -1,6 +1,6 @@
-export default function SectionAddAnuncio() {
+export default function SectionAddAnuncio({ setOpenDrawer }) {
   function handleOpenDrawer() {
-    console.log("cliquei no botao");
+    setOpenDrawer(true);
   }
 
   return (
