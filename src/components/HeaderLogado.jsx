@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function HeaderLogado() {
   const [state, setState] = useState(false);
 
   const navigation = ["Logout"];
 
-  const submenuNav = ["Todos os anúncios", "Meus anúncios"];
+  const submenuNav = [
+    { title: "Todos os anúncios", path: "/" },
+    { title: "Meus anúncios", path: "/meus-anuncios" },
+  ];
 
   return (
     <header className="text-base lg:text-sm">
@@ -107,9 +111,12 @@ export default function HeaderLogado() {
           {submenuNav.map((item, idx) => {
             return (
               <li key={idx}>
-                <button className="block py-2 px-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 duration-150">
-                  {item}
-                </button>
+                <Link
+                  to={item.path}
+                  className="block py-2 px-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 duration-150"
+                >
+                  {item.title}
+                </Link>
               </li>
             );
           })}

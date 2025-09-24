@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [state, setState] = useState(false);
 
   const navigation = [
-    { title: "Todos os anúncios", path: "javascript:void(0)" },
-    { title: "Meus anúncios", path: "javascript:void(0)" },
+    { title: "Todos os anúncios", path: "/" },
+    { title: "Meus anúncios", path: "/meus-anuncios" },
   ];
 
   useEffect(() => {
@@ -79,22 +80,22 @@ export default function Header() {
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-700 hover:text-gray-900">
-                  <a href={item.path} className="block">
+                  <Link to={item.path} className="block">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
           </ul>
           <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
-            <a
-              href="javascript:void(0)"
+            <Link
+              to={"/login"}
               className="block text-gray-700 hover:text-gray-900"
             >
               Entrar
-            </a>
-            <a
-              href="javascript:void(0)"
+            </Link>
+            <Link
+              to={"/cadastro"}
               className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
             >
               Cadastre-se
@@ -110,7 +111,7 @@ export default function Header() {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
