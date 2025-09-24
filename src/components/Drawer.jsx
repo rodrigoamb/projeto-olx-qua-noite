@@ -10,9 +10,7 @@ import {
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-export default function Drawer() {
-  const [open, setOpen] = useState(false);
-
+export default function Drawer({ open, setOpen }) {
   return (
     <div>
       <Dialog open={open} onClose={setOpen} className="relative z-10">
