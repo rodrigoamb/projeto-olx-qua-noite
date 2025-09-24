@@ -1,6 +1,9 @@
 import { PencilLineIcon, TrashIcon } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
 
 export default function CardsLogado({ setOpenModalDelete }) {
+  const navigate = useNavigate();
+
   const anunciosData = [
     {
       titulo: "Bicicleta Aro 29",
@@ -28,6 +31,10 @@ export default function CardsLogado({ setOpenModalDelete }) {
 
   function handleOpenModalDelete() {
     setOpenModalDelete(true);
+  }
+
+  function handleChangeRoute() {
+    navigate("/detalhe");
   }
 
   return (
@@ -111,7 +118,10 @@ export default function CardsLogado({ setOpenModalDelete }) {
               </div>
             </button>
             <div className="flex flex-col gap-3">
-              <button className="text-white bg-green-700 w-fit p-3 rounded-xl">
+              <button
+                onClick={handleChangeRoute}
+                className="text-white bg-green-700 w-fit p-3 rounded-xl"
+              >
                 <PencilLineIcon size={32} />
               </button>
               <button
