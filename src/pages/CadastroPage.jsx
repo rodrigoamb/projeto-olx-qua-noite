@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import estadosDoBrasil from "../mock/estadosDoBrasil";
 
 export default function CadastroPage() {
@@ -67,12 +68,12 @@ export default function CadastroPage() {
               </h3>
               <p className="">
                 Já tem uma conta?{" "}
-                <a
-                  href="javascript:void(0)"
+                <Link
+                  to={"/login"}
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Faça login
-                </a>
+                </Link>
               </p>
             </div>
           </div>

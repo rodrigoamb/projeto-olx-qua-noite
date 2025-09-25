@@ -37,13 +37,12 @@ export default function Modal({ open, setOpen }) {
                       as="h3"
                       className="text-base font-semibold text-gray-900"
                     >
-                      Deactivate account
+                      Deletar anúncio
                     </DialogTitle>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to deactivate your account? All of
-                        your data will be permanently removed. This action
-                        cannot be undone.
+                        Você tem certeza que deseja deletar este anúncio? Esta
+                        ação não pode ser desfeita.
                       </p>
                     </div>
                   </div>
@@ -55,7 +54,7 @@ export default function Modal({ open, setOpen }) {
                   onClick={() => setOpen(false)}
                   className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto"
                 >
-                  Deactivate
+                  Deletar anúncio
                 </button>
                 <button
                   type="button"
@@ -63,7 +62,7 @@ export default function Modal({ open, setOpen }) {
                   onClick={() => setOpen(false)}
                   className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                 >
-                  Cancel
+                  Cancelar
                 </button>
               </div>
             </DialogPanel>

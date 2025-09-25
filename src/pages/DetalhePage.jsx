@@ -1,11 +1,6 @@
-export default function DetalhePage() {
-  const servicesItems = [
-    "Mobile development",
-    "UI/UX Design",
-    "web development",
-    "SEO",
-  ];
+import { Link } from "react-router-dom";
 
+export default function DetalhePage() {
   return (
     <main className="flex overflow-hidden">
       <div className="flex justify-center items-center">
@@ -25,6 +20,7 @@ export default function DetalhePage() {
               terminar.
             </p>
           </div>
+
           <form
             onSubmit={(e) => e.preventDefault()}
             className="space-y-5 mt-3 lg:pb-12"
@@ -72,9 +68,17 @@ export default function DetalhePage() {
               />
             </div>
 
-            <button className="w-full px-4 py-2 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg duration-150">
-              Editar anúncio
-            </button>
+            <div className="flex flex-col gap-4 items-center">
+              <button className="w-full px-4 py-2 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg duration-150">
+                Editar anúncio
+              </button>
+              <Link
+                to={"/meus-anuncios"}
+                className="w-full text-center border-1 border-gray-400 py-2 rounded-lg hover:bg-gray-100 duration-150 font-semibold"
+              >
+                Cancelar
+              </Link>
+            </div>
           </form>
         </div>
       </div>

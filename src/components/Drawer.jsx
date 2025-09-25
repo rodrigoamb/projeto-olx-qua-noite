@@ -8,6 +8,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import FormAddAnuncio from "./FormAddAnuncio";
 
 export default function Drawer({ open, setOpen }) {
   return (
@@ -41,11 +42,11 @@ export default function Drawer({ open, setOpen }) {
                 <div className="relative flex h-full flex-col overflow-y-auto bg-white py-6 shadow-xl">
                   <div className="px-4 sm:px-6">
                     <DialogTitle className="text-base font-semibold text-gray-900">
-                      Panel title
+                      Criar Anúncio
                     </DialogTitle>
                   </div>
                   <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                    {/* Your content */}
+                    <FormAddAnuncio />
                   </div>
                 </div>
               </DialogPanel>

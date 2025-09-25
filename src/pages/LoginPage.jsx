@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { theme } from "../themes/theme";
 
 export default function LoginPage() {
@@ -17,12 +18,12 @@ export default function LoginPage() {
             </h3>
             <p className="">
               Não possui uma conta?{" "}
-              <a
-                href="javascript:void(0)"
+              <Link
+                to={"/cadastro"}
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Cadastre-se
-              </a>
+              </Link>
             </p>
           </div>
         </div>
