@@ -1,7 +1,31 @@
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import estadosDoBrasil from "../mock/estadosDoBrasil";
+import { useState } from "react";
 
 export default function CadastroPage() {
+  const [dataCadastro, setDataCadastro] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    cidade: "",
+    estado: "",
+    senha: "",
+  });
+
+  function handleChangeInputs(event) {
+    const { value, name } = event.target;
+
+    setDataCadastro({ ...dataCadastro, [name]: value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    console.log(dataCadastro);
+  }
+
+  console.log(dataCadastro);
+
   return (
     <main className="w-full flex">
       <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
@@ -83,12 +107,15 @@ export default function CadastroPage() {
               Ou continue com
             </p>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="font-medium">Nome</label>
               <input
                 type="text"
                 required
+                name="nome"
+                value={dataCadastro.nome}
+                onChange={handleChangeInputs}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />
             </div>
@@ -96,6 +123,9 @@ export default function CadastroPage() {
               <label className="font-medium">Email</label>
               <input
                 type="email"
+                name="email"
+                onChange={handleChangeInputs}
+                value={dataCadastro.email}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />
@@ -104,6 +134,9 @@ export default function CadastroPage() {
               <label className="font-medium">Telefone</label>
               <input
                 type="number"
+                name="telefone"
+                value={dataCadastro.telefone}
+                onChange={handleChangeInputs}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />
@@ -112,6 +145,9 @@ export default function CadastroPage() {
               <label className="font-medium">Cidade</label>
               <input
                 type="text"
+                name="cidade"
+                value={dataCadastro.cidade}
+                onChange={handleChangeInputs}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />
@@ -120,6 +156,9 @@ export default function CadastroPage() {
               <label className="font-medium">Estado</label>
               <select
                 required
+                name="estado"
+                value={dataCadastro.estado}
+                onChange={handleChangeInputs}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               >
                 <option value="">Selecione um estado</option>
@@ -136,6 +175,9 @@ export default function CadastroPage() {
               <label className="font-medium">Senha</label>
               <input
                 type="password"
+                name="senha"
+                value={dataCadastro.senha}
+                onChange={handleChangeInputs}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />
