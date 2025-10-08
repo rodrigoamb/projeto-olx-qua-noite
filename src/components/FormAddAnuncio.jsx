@@ -83,7 +83,10 @@ export default function FormAddAnuncio() {
         />
       </div>
 
-      <button className="w-full px-4 py-2 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg duration-150">
+      <button
+        type="submit"
+        className="w-full px-4 py-2 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg duration-150"
+      >
         Adicionar anúncio
       </button>
     </form>

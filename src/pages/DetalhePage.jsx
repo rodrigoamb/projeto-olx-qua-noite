@@ -1,6 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function DetalhePage() {
+  const [dataEditAnuncio, setDataEditAnuncio] = useState({
+    titulo: "",
+    preco: "",
+    descricaoCurta: "",
+    descricaoCompleta: "",
+    imagem: "",
+  });
+
   return (
     <main className="flex overflow-hidden">
       <div className="flex justify-center items-center">
@@ -29,6 +38,7 @@ export default function DetalhePage() {
               <label className="font-medium">Título anúncio</label>
               <input
                 type="text"
+                name="titulo"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
@@ -37,6 +47,7 @@ export default function DetalhePage() {
               <label className="font-medium">Preço</label>
               <input
                 type="number"
+                name="preco"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
@@ -46,6 +57,7 @@ export default function DetalhePage() {
               <label className="font-medium">Descrição Curta</label>
               <input
                 type="text"
+                name="descricaoCurta"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
@@ -55,6 +67,7 @@ export default function DetalhePage() {
               <label className="font-medium">Descrição Completa</label>
               <textarea
                 required
+                name="descricaoCompleta"
                 className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               ></textarea>
             </div>
@@ -63,6 +76,7 @@ export default function DetalhePage() {
               <label className="font-medium">Link da imagem</label>
               <input
                 type="text"
+                name="imagem"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
