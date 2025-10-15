@@ -10,6 +10,17 @@ export default function DetalhePage() {
     imagem: "",
   });
 
+  function handleChangeEditAnuncio(event) {
+    const { name, value } = event.target;
+    setDataEditAnuncio({ ...dataEditAnuncio, [name]: value });
+  }
+
+  function handleSubmitEditAnuncio(event) {
+    event.preventDefault();
+
+    console.log(dataEditAnuncio);
+  }
+
   return (
     <main className="flex overflow-hidden">
       <div className="flex justify-center items-center">
@@ -31,7 +42,7 @@ export default function DetalhePage() {
           </div>
 
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmitEditAnuncio}
             className="space-y-5 mt-3 lg:pb-12"
           >
             <div>
@@ -39,6 +50,8 @@ export default function DetalhePage() {
               <input
                 type="text"
                 name="titulo"
+                value={dataEditAnuncio.titulo}
+                onChange={handleChangeEditAnuncio}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
@@ -48,6 +61,8 @@ export default function DetalhePage() {
               <input
                 type="number"
                 name="preco"
+                value={dataEditAnuncio.preco}
+                onChange={handleChangeEditAnuncio}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
@@ -58,6 +73,8 @@ export default function DetalhePage() {
               <input
                 type="text"
                 name="descricaoCurta"
+                value={dataEditAnuncio.descricaoCurta}
+                onChange={handleChangeEditAnuncio}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
@@ -68,6 +85,8 @@ export default function DetalhePage() {
               <textarea
                 required
                 name="descricaoCompleta"
+                value={dataEditAnuncio.descricaoCompleta}
+                onChange={handleChangeEditAnuncio}
                 className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               ></textarea>
             </div>
@@ -77,6 +96,8 @@ export default function DetalhePage() {
               <input
                 type="text"
                 name="imagem"
+                value={dataEditAnuncio.imagem}
+                onChange={handleChangeEditAnuncio}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  function handleSubmitLogin(event) {
+  async function handleSubmitLogin(event) {
     event.preventDefault();
 
     const dataLogin = {
@@ -15,7 +16,31 @@ export default function LoginPage() {
 
     console.log(dataLogin);
 
-    console.log("Enviar para backend");
+    try {
+      const response = await fetch(
+        "https://dc-classificados.up.railway.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(dataLogin),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.userId);
+
+        toast.success("Login realizado com sucesso");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

@@ -1,8 +1,11 @@
-import { data, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import estadosDoBrasil from "../mock/estadosDoBrasil";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function CadastroPage() {
+  const navigate = useNavigate();
+
   const [dataCadastro, setDataCadastro] = useState({
     nome: "",
     email: "",
@@ -18,13 +21,49 @@ export default function CadastroPage() {
     setDataCadastro({ ...dataCadastro, [name]: value });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     console.log(dataCadastro);
-  }
 
-  console.log(dataCadastro);
+    // const data = {
+    //   nome: dataCadastro.nome,
+    //   email: dataCadastro.email,
+    //   senha: dataCadastro.senha,
+    //   telefone: Number(dataCadastro.telefone),
+    //   cidade: dataCadastro.cidade,
+    //   estado: dataCadastro.estado,
+    // };
+
+    const dataRegister = {
+      ...dataCadastro,
+      telefone: Number(dataCadastro.telefone),
+    };
+
+    try {
+      const response = await fetch(
+        "https://dc-classificados.up.railway.app/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataRegister),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Usuário cadastrado com sucesso.");
+        navigate("/login");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <main className="w-full flex">
