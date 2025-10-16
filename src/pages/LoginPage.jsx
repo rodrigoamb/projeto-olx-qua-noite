@@ -22,7 +22,7 @@ export default function LoginPage() {
         {
           method: "POST",
           headers: {
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(dataLogin),
         }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function FormAddAnuncio() {
   const [dataNovoAnuncio, setDataNovoAnuncio] = useState({
@@ -14,10 +15,34 @@ export default function FormAddAnuncio() {
     setDataNovoAnuncio({ ...dataNovoAnuncio, [name]: value });
   }
 
-  function handleSubmitNovoAnuncio(event) {
+  async function handleSubmitNovoAnuncio(event) {
     event.preventDefault();
 
-    console.log(dataNovoAnuncio);
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(
+        `https://dc-classificados.up.railway.app/api/anuncios/addNewAnuncio?userId=${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
