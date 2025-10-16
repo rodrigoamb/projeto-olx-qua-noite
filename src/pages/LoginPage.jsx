@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -13,8 +15,6 @@ export default function LoginPage() {
       email,
       senha,
     };
-
-    console.log(dataLogin);
 
     try {
       const response = await fetch(
@@ -35,6 +35,8 @@ export default function LoginPage() {
         localStorage.setItem("userId", data.userId);
 
         toast.success("Login realizado com sucesso");
+
+        navigate("/meus-anuncios");
       } else {
         toast.error(data.message);
       }
