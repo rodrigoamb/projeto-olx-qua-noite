@@ -46,7 +46,7 @@ export default function Drawer({ open, setOpen }) {
                     </DialogTitle>
                   </div>
                   <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                    <FormAddAnuncio />
+                    <FormAddAnuncio setOpen={setOpen} />
                   </div>
                 </div>
               </DialogPanel>

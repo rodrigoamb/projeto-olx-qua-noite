@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function FormAddAnuncio() {
+export default function FormAddAnuncio({ setOpen }) {
   const [dataNovoAnuncio, setDataNovoAnuncio] = useState({
     titulo: "",
     preco: "",
@@ -30,13 +30,29 @@ export default function FormAddAnuncio() {
             "Content-Type": "application/json",
             authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(),
+          body: JSON.stringify({
+            ...dataNovoAnuncio,
+            preco: Number(dataNovoAnuncio.preco),
+          }),
         }
       );
 
       const data = await response.json();
 
       if (response.ok) {
+        toast.success("Anúncio criado com sucesso");
+
+        setDataNovoAnuncio({
+          titulo: "",
+          preco: "",
+          descricaoCurta: "",
+          descricaoCompleta: "",
+          imagem: "",
+        });
+
+        setOpen(false);
+
+        //requisicao para trazer os dados dos anuncios atualizados - falta implementar
       } else {
         toast.error(data.message);
       }

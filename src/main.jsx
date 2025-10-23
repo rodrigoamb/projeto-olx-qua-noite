@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import CadastroPage from "./pages/CadastroPage.jsx";
 import DetalhePage from "./pages/DetalhePage.jsx";
 import MeusAnunciosPage from "./pages/MeusAnunciosPage.jsx";
+import UseEffectPage from "./pages/UseEffectPage.jsx";
 import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
@@ -18,6 +19,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/detalhe" element={<DetalhePage />} />
         <Route path="/meus-anuncios" element={<MeusAnunciosPage />} />
+
+        <Route path="/useeffect" element={<UseEffectPage />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
