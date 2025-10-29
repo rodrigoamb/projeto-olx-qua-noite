@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function FormAddAnuncio({ setOpen }) {
+export default function FormAddAnuncio({ setOpen, fetchData }) {
   const [dataNovoAnuncio, setDataNovoAnuncio] = useState({
     titulo: "",
     preco: "",
@@ -52,7 +52,7 @@ export default function FormAddAnuncio({ setOpen }) {
 
         setOpen(false);
 
-        //requisicao para trazer os dados dos anuncios atualizados - falta implementar
+        fetchData();
       } else {
         toast.error(data.message);
       }

@@ -10,7 +10,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import FormAddAnuncio from "./FormAddAnuncio";
 
-export default function Drawer({ open, setOpen }) {
+export default function Drawer({ open, setOpen, fetchData }) {
   return (
     <div>
       <Dialog open={open} onClose={setOpen} className="relative z-10">
@@ -46,7 +46,7 @@ export default function Drawer({ open, setOpen }) {
                     </DialogTitle>
                   </div>
                   <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                    <FormAddAnuncio setOpen={setOpen} />
+                    <FormAddAnuncio setOpen={setOpen} fetchData={fetchData} />
                   </div>
                 </div>
               </DialogPanel>

@@ -1,6 +1,5 @@
 import { CircleNotchIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 export default function Cards() {
   const [anunciosData, setAnunciosData] = useState([]);
@@ -44,7 +43,6 @@ export default function Cards() {
 
       if (response.ok) {
         setAnunciosData(data);
-        toast.success("Todos os anúncios carregados");
       }
     } catch (error) {
       console.error(error);
@@ -62,9 +60,9 @@ export default function Cards() {
   return (
     <div>
       {loading ? (
-        <div className="text-[#6F0AD5]">
-          <CircleNotchIcon size={32} />
-          <p>Carregando...</p>
+        <div className="text-[#6F0AD5] flex justify-center items-center flex-col ">
+          <CircleNotchIcon size={70} className="animate-spin" />
+          <p className="text-2xl">Carregando...</p>
         </div>
       ) : (
         <section className="mt-12 max-w-screen-lg mx-auto px-4 md:px-8">
