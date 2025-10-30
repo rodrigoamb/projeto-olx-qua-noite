@@ -9,10 +9,12 @@ export default function CardsLogado({
   setOpenModalDelete,
   anunciosData,
   loading,
+  setAnuncioToDelete,
 }) {
   const navigate = useNavigate();
 
-  function handleOpenModalDelete() {
+  function handleOpenModalDelete(anuncio) {
+    setAnuncioToDelete(anuncio.id);
     setOpenModalDelete(true);
   }
 
@@ -114,7 +116,7 @@ export default function CardsLogado({
                   <PencilLineIcon size={32} />
                 </button>
                 <button
-                  onClick={handleOpenModalDelete}
+                  onClick={() => handleOpenModalDelete(item)}
                   className="text-white bg-red-700 w-fit p-3 rounded-xl"
                 >
                   <TrashIcon size={32} />

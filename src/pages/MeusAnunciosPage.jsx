@@ -13,6 +13,7 @@ export default function MeusAnunciosPage() {
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [anunciosData, setAnunciosData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [anuncioToDelete, setAnuncioToDelete] = useState("");
 
   async function fetchData() {
     setLoading(true);
@@ -57,11 +58,17 @@ export default function MeusAnunciosPage() {
         setOpenModalDelete={setOpenModalDelete}
         anunciosData={anunciosData}
         loading={loading}
+        setAnuncioToDelete={setAnuncioToDelete}
       />
       <Footer />
 
       <Drawer open={openDrawer} setOpen={setOpenDrawer} fetchData={fetchData} />
-      <Modal open={openModalDelete} setOpen={setOpenModalDelete} />
+      <Modal
+        open={openModalDelete}
+        setOpen={setOpenModalDelete}
+        anuncioToDelete={anuncioToDelete}
+        fetchData={fetchData}
+      />
     </div>
   );
 }
