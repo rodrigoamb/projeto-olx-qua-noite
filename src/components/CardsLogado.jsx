@@ -10,6 +10,7 @@ export default function CardsLogado({
   anunciosData,
   loading,
   setAnuncioToDelete,
+  // setAnuncioToEdit
 }) {
   const navigate = useNavigate();
 
@@ -18,8 +19,9 @@ export default function CardsLogado({
     setOpenModalDelete(true);
   }
 
-  function handleChangeRoute() {
-    navigate("/detalhe");
+  function handleChangeRoute(anuncio) {
+    // setAnuncioToEdit(anuncio.id)
+    navigate(`/anuncio/${anuncio.id}`);
   }
 
   return (
@@ -113,7 +115,7 @@ export default function CardsLogado({
               </button>
               <div className="flex flex-col gap-3">
                 <button
-                  onClick={handleChangeRoute}
+                  onClick={() => handleChangeRoute(item)}
                   className="text-white bg-green-700 w-fit p-3 rounded-xl"
                 >
                   <PencilLineIcon size={32} />
