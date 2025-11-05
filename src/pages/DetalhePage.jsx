@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function DetalhePage() {
+  const [loading, setLoading] = useState(false)
   const [dataEditAnuncio, setDataEditAnuncio] = useState({
     titulo: "",
     preco: "",
@@ -10,13 +12,66 @@ export default function DetalhePage() {
     imagem: "",
   });
 
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  async function fetchDataAnuncio() {
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        `https://dc-classificados.up.railway.app/api/anuncios/getMyAnuncio/${id}`
+       
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setDataEditAnuncio(data);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   function handleChangeEditAnuncio(event) {
     const { name, value } = event.target;
     setDataEditAnuncio({ ...dataEditAnuncio, [name]: value });
   }
 
-  function handleSubmitEditAnuncio(event) {
+  async function handleSubmitEditAnuncio(event) {
     event.preventDefault();
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(
+        `https://dc-classificados.up.railway.app/api/anuncios/updateMyAnuncio/${id}?userId=${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            ...dataEditAnuncio,
+            preco: Number(dataEditAnuncio.preco),
+          }),
+        }
+      );
+      const data = await response.json()
+
+      if (response.ok) {
+        toast.success("Anúncio atualizado com sucesso!")
+        navigate("/meus-anuncios")
+      } else {
+        toast.error(data.message)
+      }
+    } catch (error) {
+      
+    }
 
     console.log(dataEditAnuncio);
   }
@@ -25,7 +80,7 @@ export default function DetalhePage() {
     <main className="flex overflow-hidden">
       <div className="flex justify-center items-center">
         <img
-          src="https://m.media-amazon.com/images/I/51VZErxKwkL._AC_SX679_.jpg"
+          src={dataEditAnuncio.imagem}
           className="w-[50%]"
         />
       </div>

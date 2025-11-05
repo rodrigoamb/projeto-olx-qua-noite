@@ -78,6 +78,9 @@ export default function Cards() {
                 key={idx}
                 className="p-5 bg-white rounded-md shadow-sm flex flex-row gap-5"
               >
+              <div className="">
+                <img className="w-[200px] h-[200px] object-contain" src={item.imagem} alt={item.descricaoCurta} />
+              </div>
                 <button className="w-full">
                   <div>
                     <div className="justify-between sm:flex">

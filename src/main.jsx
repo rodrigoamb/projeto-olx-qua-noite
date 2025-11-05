@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<InicioPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<CadastroPage />} />
-        <Route path="/detalhe" element={<DetalhePage />} />
+        <Route path="/anuncio/:id" element={<DetalhePage />} />
         <Route path="/meus-anuncios" element={<MeusAnunciosPage />} />
 
         <Route path="/useeffect" element={<UseEffectPage />} />
