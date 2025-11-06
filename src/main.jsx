@@ -9,6 +9,7 @@ import DetalhePage from "./pages/DetalhePage.jsx";
 import MeusAnunciosPage from "./pages/MeusAnunciosPage.jsx";
 import UseEffectPage from "./pages/UseEffectPage.jsx";
 import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,9 +18,19 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<InicioPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<CadastroPage />} />
-        <Route path="/anuncio/:id" element={<DetalhePage />} />
-        <Route path="/meus-anuncios" element={<MeusAnunciosPage />} />
-
+        <Route  path="/anuncio/:id" 
+        element={
+        <ProtectedRoute>
+          <DetalhePage/>
+        </ProtectedRoute> 
+        }
+        />
+        
+        <Route path="/meus-anuncios" element={
+          <ProtectedRoute>
+            <MeusAnunciosPage/>
+        </ProtectedRoute>
+      }/>
         <Route path="/useeffect" element={<UseEffectPage />} />
       </Routes>
       <ToastContainer />
