@@ -4,6 +4,7 @@ import {
   TrashIcon,
 } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../utils/formatDate";
 
 export default function CardsLogado({
   setOpenModalDelete,
@@ -45,7 +46,11 @@ export default function CardsLogado({
               className="p-5 bg-white rounded-md shadow-sm flex flex-row gap-5"
             >
               <div className="">
-                <img className="w-[200px] h-[200px] object-contain" src={item.imagem} alt={item.descricaoCurta} />
+                <img
+                  className="w-[200px] h-[200px] object-contain"
+                  src={item.imagem}
+                  alt={item.descricaoCurta}
+                />
               </div>
               <button className="w-full">
                 <div>
@@ -72,7 +77,7 @@ export default function CardsLogado({
                             clipRule="evenodd"
                           />
                         </svg>
-                        {item.created_at}
+                        {formatDate(item.created_at)}
                       </span>
                       <span className="flex items-center text-gray-500">
                         <svg

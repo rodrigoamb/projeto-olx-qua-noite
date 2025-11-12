@@ -1,5 +1,6 @@
 import { CircleNotchIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
+import { formatDate } from "../utils/formatDate";
 
 export default function Cards() {
   const [anunciosData, setAnunciosData] = useState([]);
@@ -54,17 +55,6 @@ export default function Cards() {
   useEffect(() => {
     fetchDataAnuncios();
   }, []);
-
-  function formatDate(dateString) {
-    const date = dateString.split("T")[0];
-    const time = dateString.split("T")[1];
-
-    const formatedDate = date.split("-").reverse().join("/");
-    const hour = time.split(":")[0];
-    const minutes = time.split(":")[1];
-
-    return `${formatedDate} às ${hour}:${minutes}`;
-  }
 
   return (
     <div>
