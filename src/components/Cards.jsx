@@ -55,7 +55,16 @@ export default function Cards() {
     fetchDataAnuncios();
   }, []);
 
-  console.log(anunciosData);
+  function formatDate(dateString) {
+    const date = dateString.split("T")[0];
+    const time = dateString.split("T")[1];
+
+    const formatedDate = date.split("-").reverse().join("/");
+    const hour = time.split(":")[0];
+    const minutes = time.split(":")[1];
+
+    return `${formatedDate} às ${hour}:${minutes}`;
+  }
 
   return (
     <div>
@@ -78,9 +87,13 @@ export default function Cards() {
                 key={idx}
                 className="p-5 bg-white rounded-md shadow-sm flex flex-row gap-5"
               >
-              <div className="">
-                <img className="w-[200px] h-[200px] object-contain" src={item.imagem} alt={item.descricaoCurta} />
-              </div>
+                <div className="">
+                  <img
+                    className="w-[200px] h-[200px] object-contain"
+                    src={item.imagem}
+                    alt={item.descricaoCurta}
+                  />
+                </div>
                 <button className="w-full">
                   <div>
                     <div className="justify-between sm:flex">
@@ -106,7 +119,7 @@ export default function Cards() {
                               clipRule="evenodd"
                             />
                           </svg>
-                          {item.created_at}
+                          {formatDate(item.created_at)}
                         </span>
                         <span className="flex items-center text-gray-500">
                           <svg
